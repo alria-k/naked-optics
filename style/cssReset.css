@@ -48,6 +48,7 @@ li {
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
 a {
+  display: block;
   text-decoration: none;
   color: inherit;
 }
