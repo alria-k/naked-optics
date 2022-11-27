@@ -25,6 +25,13 @@ body{
         color: #0A0A0A;
         max-width: 245.39px;
         width: 100%;
+        @media (max-width:400px) {
+            max-width: 163px;
+            font-size: 14px;
+        }
+        @media (max-width: 340px) {
+            font-size: 12px;
+        }
         svg{
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -46,4 +53,45 @@ body{
         border: 1px solid #FFFFFF;
         border-radius: 4px;
     }
+}
+.main{
+    padding-top: 97px;
+}
+.burger {
+    &-lines {
+        cursor: pointer;
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background-color: #000000;
+        border-radius: 4px;
+        top: 0;
+        left: 0;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background-color: #000000;
+            border-radius: 4px;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 20px;
+            height: 2px;
+            background-color: #000000;
+            border-radius: 4px;
+        }
+    }
+}
+.hiden{
+    display: none;
+}
+.active{
+    display: block;
 }
