@@ -1,5 +1,20 @@
 // @import '_homepage.scss';
 
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-20px);
+        -ms-transform: translateX(-20px);
+        transform: translateX(-20px);
+    }
+    
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
 body{
     background: #F6F6F6;
 }
@@ -103,7 +118,8 @@ body{
     }
 }
 .hiden{
-    display: none;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
 .active{
     display: block;
@@ -118,7 +134,7 @@ body{
     background: rgba(49,69,80,0.8);
 }
 .is__open{
-    display: block;
+    display: block !important;
 }
 .is__point{
     background: #F7F7F7;

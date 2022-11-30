@@ -1,5 +1,4 @@
 .header {
-  padding: 24.5px 0 15px 0;
   margin-bottom: 15px;
   background-color: #FFFFFF;
   overflow: hidden;
@@ -29,13 +28,16 @@
 }
 
 .header__catalog {
+  visibility: visible;
+  opacity: 1;
   width: 100%;
   position: fixed;
   z-index: 109;
   left: 0;
-  top: 81px;
+  top: 70px;
   background-color: #FFFFFF;
   border-top: 1px solid #E7E7E7;
+  transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .header__catalog-box {
@@ -84,7 +86,7 @@
   height: 5px;
   bottom: 0;
   left: 0;
-  transform: translateY(25px);
+  transform: translateY(0px);
   background-color: #000000;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -92,6 +94,7 @@
 }
 
 .nav__link {
+  padding: 24.5px 0 24.5px 0;
   font-weight: 500;
   font-size: 16px;
   line-height: 21px;
@@ -197,7 +200,7 @@
   }
 }
 
-@media (max-width: 5500px) {
+@media (max-width: 550px) {
   .banner__box-container {
     padding: 255px 87px 50px 0px;
   }
@@ -1000,6 +1003,8 @@
 
 .catalog-item {
   display: none;
+  transition: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .catalog-item__title {

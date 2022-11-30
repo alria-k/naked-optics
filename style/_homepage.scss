@@ -1,5 +1,4 @@
 .header {
-    padding: 24.5px 0 15px 0;
     margin-bottom: 15px;
     background-color:#FFFFFF;
     overflow: hidden;
@@ -20,13 +19,16 @@
         }
     }
     &__catalog {
+        visibility: visible;
+        opacity: 1;
         width: 100%;
         position: fixed;
         z-index: 109;
         left: 0;
-        top: 81px;
+        top: 70px;
         background-color: #FFFFFF;
         border-top: 1px solid #E7E7E7;
+        transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         &-box {
             display: flex;
             padding: 47px 0 22px 0;
@@ -70,7 +72,7 @@
                 height: 5px;
                 bottom: 0;
                 left: 0;
-                transform: translateY(25px);
+                transform: translateY(0px);
                 background-color: #000000;
                 border-top-left-radius: 6px;
                 border-top-right-radius: 6px;
@@ -79,6 +81,7 @@
         }
     }
     &__link {
+        padding: 24.5px 0 24.5px 0;
         font-weight: 500;
         font-size: 16px;
         line-height: 21px;
@@ -158,7 +161,7 @@
             @media (max-width:800px) {
                 padding: 399px 95px 156px 95px;
             }
-            @media (max-width:5500px) {
+            @media (max-width:550px) {
                 padding: 255px 87px 50px 0px;
             }
         }
@@ -814,6 +817,8 @@
     }
     &-item {
         display: none;
+        transition: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        animation: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
         &__title{
             font-weight: 700;
             font-size: 20px;
