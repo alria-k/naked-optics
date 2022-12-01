@@ -19,7 +19,7 @@ burger.addEventListener("click", (e) => {
   }
 });
 
-// mouse enter nav
+// mouse hover tabs
 
 let navItem = document.querySelectorAll(".catalog-object"),
   catalogBox = document.querySelectorAll(".header__catalog");
@@ -46,3 +46,23 @@ function showAndHideCatalog(event) {
     overflow.remove();
   }
 }
+
+// mouse hover tabs-items
+
+let categoryItems = document.querySelectorAll(".category-item"),
+  catalogItems = document.querySelectorAll(".catalog-item");
+
+categoryItems.forEach((e) => {
+  e.addEventListener("mouseenter", (lol) => {
+    for (let pop of categoryItems) {
+      pop.classList.remove("is__point");
+    }
+    lol.target.classList.add("is__point");
+    catalogItems.forEach((e) => {
+      e.classList.remove("is__open");
+      if (e.dataset.item == lol.target.dataset.category) {
+        e.classList.add("is__open");
+      }
+    });
+  });
+});
