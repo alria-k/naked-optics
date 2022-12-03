@@ -119,6 +119,7 @@
     }
     &__inner {
         display: flex;
+        align-items: flex-end;
         justify-content: center;
         gap: 80px;
         @media (max-width:1150px) {
@@ -404,6 +405,12 @@
     &__carousel {
         display: flex;
         gap: 25px;
+        -webkit-touch-callout: none; 
+        -webkit-user-select: none; 
+        -khtml-user-select: none; 
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        user-select: none;
         &-title{
             position: absolute;
             bottom: 33%;
@@ -424,7 +431,7 @@
             overflow: hidden;
             border-radius: 6px;
             @media (max-width:550px) {
-                min-width: 320px;
+                min-width: 290px;
             }
             &:hover{
                 .stories-img{

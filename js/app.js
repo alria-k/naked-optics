@@ -66,3 +66,46 @@ categoryItems.forEach((e) => {
     });
   });
 });
+
+// dragable carousel slider
+
+let sliderContainer = document.querySelector(".lol__container"),
+  itemsContainer = document.querySelector(".lol"),
+  sliderWidth,
+  cursorPosition,
+  offsetXSlider,
+  rect = sliderContainer.getBoundingClientRect(),
+  pressed = false;
+
+sliderContainer.addEventListener("mousedown", (e) => {
+  sliderWidth = -Math.abs(
+    sliderContainer.scrollWidth - sliderContainer.clientWidth
+  );
+  rect = e.currentTarget.getBoundingClientRect();
+  offsetXSlider = e.clientX - rect.left;
+  cursorPosition =
+    offsetXSlider - (itemsContainer.offsetLeft - itemsContainer.offsetLeft);
+  pressed = true;
+});
+sliderContainer.addEventListener("mouseup", (e) => {
+  pressed = false;
+});
+
+sliderContainer.addEventListener("mousemove", dragSlide);
+
+function dragSlide(event) {
+  if (!pressed) return;
+  event.preventDefault();
+
+  x = event.clientX - rect.left;
+
+  let moveX = x - cursorPosition;
+
+  itemsContainer.style.transform = `translateX(${moveX}px)`;
+  if (moveX >= 1) {
+    itemsContainer.style.transform = `translateX(0px)`;
+  } else if (moveX <= sliderWidth) {
+    itemsContainer.style.transform = `translateX(${sliderWidth}px)`;
+    moveX = sliderWidth;
+  }
+}
