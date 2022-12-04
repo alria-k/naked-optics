@@ -137,7 +137,7 @@
 
 .glasses__inner {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   gap: 80px;
 }
@@ -475,6 +475,7 @@
 
 .stories-img {
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 .stories__box {
@@ -501,6 +502,7 @@
 .stories__carousel {
   display: flex;
   gap: 25px;
+  touch-action: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -945,6 +947,7 @@
 }
 
 .solutions-img {
+  pointer-events: none;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 

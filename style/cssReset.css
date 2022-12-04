@@ -58,7 +58,6 @@ a {
 img {
   max-width: 100%;
   display: block;
-  pointer-events: none;
 }
 
 /* Указываем понятную периодичность в потоке данных у article*/

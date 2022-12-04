@@ -69,43 +69,36 @@ categoryItems.forEach((e) => {
 
 // dragable carousel slider
 
-let sliderContainer = document.querySelector(".lol__container"),
-  itemsContainer = document.querySelector(".lol"),
+let sliderContainer = document.querySelector(".drag-slider__container"),
+  itemsContainer = document.querySelector(".drag-slider"),
   sliderWidth,
   cursorPosition,
   offsetXSlider,
+  movex,
   rect = sliderContainer.getBoundingClientRect(),
   pressed = false;
 
-sliderContainer.addEventListener("mousedown", (e) => {
-  sliderWidth = -Math.abs(
-    sliderContainer.scrollWidth - sliderContainer.clientWidth
-  );
-  rect = e.currentTarget.getBoundingClientRect();
-  offsetXSlider = e.clientX - rect.left;
-  cursorPosition =
-    offsetXSlider - (itemsContainer.offsetLeft - itemsContainer.offsetLeft);
+sliderContainer.addEventListener("pointerdown", (event) => {
   pressed = true;
+  cursorPosition = event.clientX - itemsContainer.getBoundingClientRect().left;
 });
-sliderContainer.addEventListener("mouseup", (e) => {
+sliderContainer.addEventListener("pointerup", (event) => {
   pressed = false;
-});
-
-sliderContainer.addEventListener("mousemove", dragSlide);
-
-function dragSlide(event) {
-  if (!pressed) return;
-  event.preventDefault();
-
-  x = event.clientX - rect.left;
-
-  let moveX = x - cursorPosition;
-
-  itemsContainer.style.transform = `translateX(${moveX}px)`;
-  if (moveX >= 1) {
-    itemsContainer.style.transform = `translateX(0px)`;
-  } else if (moveX <= sliderWidth) {
-    itemsContainer.style.transform = `translateX(${sliderWidth}px)`;
-    moveX = sliderWidth;
+  if (movex >= 0) {
+    itemsContainer.style.transform = "translateX(0px)";
+    itemsContainer.style.transitionDuration = `300ms`;
+  } else if (
+    movex <= -Math.abs(itemsContainer.scrollWidth - sliderContainer.clientWidth)
+  ) {
+    itemsContainer.style.transform = `translateX(${-Math.abs(
+      itemsContainer.scrollWidth - sliderContainer.clientWidth
+    )}px)`;
+    itemsContainer.style.transitionDuration = `300ms`;
   }
-}
+});
+sliderContainer.addEventListener("pointermove", (event) => {
+  if (!pressed) return;
+  movex = event.pageX - sliderContainer.offsetLeft - cursorPosition;
+  itemsContainer.style.transform = `translateX(${movex}px)`;
+  itemsContainer.style.transitionDuration = `0ms`;
+});

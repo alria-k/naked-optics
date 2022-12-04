@@ -165,3 +165,16 @@ body {
   background: #F7F7F7;
   border-radius: 6px;
 }
+
+.drag-slider__container {
+  position: relative;
+  height: 620px;
+  width: 100%;
+}
+
+.drag-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
