@@ -52,53 +52,79 @@ function showAndHideCatalog(event) {
 let categoryItems = document.querySelectorAll(".category-item"),
   catalogItems = document.querySelectorAll(".catalog-item");
 
-categoryItems.forEach((e) => {
-  e.addEventListener("mouseenter", (lol) => {
-    for (let pop of categoryItems) {
-      pop.classList.remove("is__point");
-    }
-    lol.target.classList.add("is__point");
-    catalogItems.forEach((e) => {
-      e.classList.remove("is__open");
-      if (e.dataset.item == lol.target.dataset.category) {
-        e.classList.add("is__open");
+function hoverTabs() {
+  categoryItems.forEach((e) => {
+    e.addEventListener("mouseenter", (lol) => {
+      for (let pop of categoryItems) {
+        pop.classList.remove("is__point");
       }
+      lol.target.classList.add("is__point");
+      catalogItems.forEach((e) => {
+        e.classList.remove("is__open");
+        if (e.dataset.item == lol.target.dataset.category) {
+          e.classList.add("is__open");
+        }
+      });
     });
   });
-});
+}
 
 // dragable carousel slider
 
-let sliderContainer = document.querySelector(".drag-slider__container"),
-  itemsContainer = document.querySelector(".drag-slider"),
-  sliderWidth,
-  cursorPosition,
-  offsetXSlider,
-  movex,
-  rect = sliderContainer.getBoundingClientRect(),
-  pressed = false;
+function dragSlider(containerQuery, itemsQuery) {
+  let sliderContainer = document.querySelector(containerQuery),
+    itemsContainer = document.querySelector(itemsQuery),
+    cursorPosition,
+    movex,
+    pressed = false;
+  sliderContainer.addEventListener("pointerdown", (event) => {
+    pressed = true;
+    cursorPosition =
+      event.clientX - itemsContainer.getBoundingClientRect().left;
+  });
+  sliderContainer.addEventListener("pointerup", (event) => {
+    pressed = false;
+    if (movex >= 0) {
+      itemsContainer.style.transform = "translateX(0px)";
+      itemsContainer.style.transitionDuration = `300ms`;
+    } else if (
+      movex <=
+      -Math.abs(itemsContainer.scrollWidth - sliderContainer.clientWidth)
+    ) {
+      itemsContainer.style.transform = `translateX(${-Math.abs(
+        itemsContainer.scrollWidth - sliderContainer.clientWidth
+      )}px)`;
+      itemsContainer.style.transitionDuration = `300ms`;
+    }
+  });
+  sliderContainer.addEventListener("pointermove", (event) => {
+    if (!pressed) return;
+    movex = event.pageX - sliderContainer.offsetLeft - cursorPosition;
+    itemsContainer.style.transform = `translateX(${movex}px)`;
+    itemsContainer.style.transitionDuration = `0ms`;
+  });
+}
+dragSlider(".story-slider__container", ".story-slider");
+if (window.innerWidth < 1330) {
+  dragSlider(".solution-slider__container", ".solution-slider");
+}
+if (window.innerWidth < 1130) {
+  dragSlider(".celebs-slider__container", ".celebs-slider");
+}
+if (window.innerWidth < 550) {
+  dragSlider(".glasses-slider__container", ".glasses-slider");
+}
 
-sliderContainer.addEventListener("pointerdown", (event) => {
-  pressed = true;
-  cursorPosition = event.clientX - itemsContainer.getBoundingClientRect().left;
+//mobile nav menu
+
+let mobileNavBtn = document.querySelectorAll(".mobile-nav__link"),
+  target;
+
+mobileNavBtn[0].addEventListener("click", (e) => {
+  target = e.target
+    .closest(".mobile-nav__item")
+    .querySelector(".catalog-category");
+  target.classList.add("active");
 });
-sliderContainer.addEventListener("pointerup", (event) => {
-  pressed = false;
-  if (movex >= 0) {
-    itemsContainer.style.transform = "translateX(0px)";
-    itemsContainer.style.transitionDuration = `300ms`;
-  } else if (
-    movex <= -Math.abs(itemsContainer.scrollWidth - sliderContainer.clientWidth)
-  ) {
-    itemsContainer.style.transform = `translateX(${-Math.abs(
-      itemsContainer.scrollWidth - sliderContainer.clientWidth
-    )}px)`;
-    itemsContainer.style.transitionDuration = `300ms`;
-  }
-});
-sliderContainer.addEventListener("pointermove", (event) => {
-  if (!pressed) return;
-  movex = event.pageX - sliderContainer.offsetLeft - cursorPosition;
-  itemsContainer.style.transform = `translateX(${movex}px)`;
-  itemsContainer.style.transitionDuration = `0ms`;
-});
+
+hoverTabs();

@@ -131,7 +131,7 @@ body{
     opacity: 0 !important;
 }
 .active{
-    display: block;
+    display: block !important;
 }
 .overflow-popup{
     position: fixed;
@@ -142,24 +142,17 @@ body{
     width: 100vw;
     background: rgba(49,69,80,0.8);
     animation: fadeIn 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-    transition: fadeIn 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: fadeIn 0.2s cubic-bezier(0.22, 1, 0.36, 1) ;
 }
 .is__open{
     display: flex !important;
     flex-direction: column;
+    @media (max-width: 1150px) {
+        position: absolute;
+        top: 0;
+    }
 }
 .is__point{
     background: #F7F7F7;
     border-radius: 6px;
-}
-.drag-slider__container {
-    position: relative;
-    height: 620px;
-    width: 100%;
-}
-.drag-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 11;
 }

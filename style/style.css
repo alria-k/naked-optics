@@ -141,7 +141,7 @@ body {
 }
 
 .active {
-  display: block;
+  display: block !important;
 }
 
 .overflow-popup {
@@ -161,20 +161,14 @@ body {
   flex-direction: column;
 }
 
+@media (max-width: 1150px) {
+  .is__open {
+    position: absolute;
+    top: 0;
+  }
+}
+
 .is__point {
   background: #F7F7F7;
   border-radius: 6px;
-}
-
-.drag-slider__container {
-  position: relative;
-  height: 620px;
-  width: 100%;
-}
-
-.drag-slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 11;
 }

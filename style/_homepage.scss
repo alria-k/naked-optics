@@ -122,6 +122,7 @@
         align-items: center;
         justify-content: center;
         gap: 80px;
+        touch-action: none;
         @media (max-width:1150px) {
             gap: 30px;
         }
@@ -222,7 +223,7 @@
             min-width: 358px;
         }
         @media (max-width:400px) {
-            min-width: 320px;
+            min-width: 290px;
         }
         &:nth-child(2){
             .celebs__name-text{
@@ -241,6 +242,7 @@
     &__box {
         display: flex;
         gap: 23px;
+        touch-action: none;
     }
     &__picture {
         margin-bottom: 78px;
@@ -256,6 +258,10 @@
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         @media (max-width:1150px) {
             bottom: 40px;
+        }
+        @media (max-width:400px) {
+            bottom: 112px;
+            min-width: 240px;
         }
     }
     &__name {
@@ -498,6 +504,9 @@
         padding-bottom: 56px;
         .stories__carousel-item{
             min-width: 310px;
+            @media (max-width:550px) {
+                min-width: 290px;
+            }
         }
     }
 }
@@ -798,6 +807,12 @@
 }
 .mobile-nav {
     &__box {
+        position: relative;
+        @media (min-width:1151px) {
+            display: none;
+        }
+    }
+    &__inner{
         position: fixed;
         max-width: 400px;
         width: 100%;
@@ -825,11 +840,31 @@
     &-category {
         max-width: 209px;
         width: 100%;
+        @media (max-width: 1150px) {
+            display: none;
+            position: absolute;
+            max-width: none;
+            height: 390px;
+            overflow-y: scroll;
+            background-color: #F6F6F6;
+            top: 0px;
+            left: 0px;
+        }
     }
     &-item {
         display: none;
         transition: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
         animation: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        @media (max-width: 1150px) {
+            background-color: #FFFFFF;
+            max-width: 400px;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+        @media (max-width: 800px) {
+            overflow-x: hidden;
+            max-width: none;
+        }
         &-img{
             margin-bottom: 18px;
         }
@@ -841,6 +876,15 @@
             text-transform: uppercase;
             color: #0A0A0A;
             margin-bottom: 18px;
+            @media (max-width: 1150px) {
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 23px;
+                color: #0A0A0A;
+                text-transform: none;
+                margin-bottom: 16px;
+                padding: 16px 16px 0 16px;
+            }
         }
         &__name{
             padding: 0 20px;
@@ -874,11 +918,18 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            @media (max-width: 1150px) {
+                display: inline-flex;
+            }
         }
         &__block{
             background-color: #F7F7F7;
             border-radius: 6px;
             padding: 0 0 28.5px 0;
+            @media (max-width: 1150px) {
+                margin: auto;
+                padding: 0px 19px 28.5px 19px;
+            }
             &:nth-child(1){
                 .catalog-item__name{
                     font-weight: 400;
@@ -890,6 +941,10 @@
                 }
                 padding: 38.5px 0;
                 grid-row: 1 / 3;
+                @media (max-width: 1150px) {
+                    padding: 24px 53px;
+                    grid-column: 1 / 3;
+                }
             }
             &:hover{
                 .catalog-item__name{
@@ -903,13 +958,29 @@
             column-gap: 16px;
             grid-template-columns: 325px 210px 210px 210px;
             grid-template-rows: 220px 220px;
+            @media (max-width: 1265px) {
+                grid-template-columns: 300px 180px 180px 180px;
+            }
+            @media (max-width: 1150px) {
+                row-gap: 16px;
+                column-gap: 8px;
+                grid-template-columns: 175.5px 175.5px;
+                grid-template-rows: 1fr;
+                justify-content: center;
+            }
         }
     }
 }
 .category {
     &-inner {
+        @media (max-width: 1150px) {
+            background-color: #fff;
+        }
         &:not(:last-child){
             margin-bottom: 30px;
+            @media (max-width: 1150px) {
+                margin-bottom: 0px;
+            }
         }
     }
     &-text{
@@ -917,6 +988,10 @@
         font-size: 13px;
         line-height: 17px;
         color: #0A0A0A;
+        @media (max-width: 1150px) {
+            font-size: 18px;
+            line-height: 23px;
+        }
     }
     &-title {
         font-weight: 400;
@@ -924,6 +999,13 @@
         line-height: 17px;
         color: #8a8989;
         margin-bottom: 5px;
+        @media (max-width: 1150px) {
+            font-size: 14px;
+            line-height: 18px;
+            margin-bottom: 0px;
+            background-color: #F6F6F6;
+            padding: 8px 0 8px 16px;
+        }
     }
     &-item {
         padding: 0 8px;
@@ -932,6 +1014,10 @@
         gap: 10px;
         margin-bottom: 3px;
         cursor: pointer;
+        @media (max-width: 1150px) {
+            border-bottom: 1px solid #E0E0E0;
+            margin-bottom: 0px;
+        }
     }
 }
 

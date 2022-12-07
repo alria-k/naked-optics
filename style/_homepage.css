@@ -140,6 +140,7 @@
   align-items: center;
   justify-content: center;
   gap: 80px;
+  touch-action: none;
 }
 
 @media (max-width: 1150px) {
@@ -278,7 +279,7 @@
 
 @media (max-width: 400px) {
   .celebs-block {
-    min-width: 320px;
+    min-width: 290px;
   }
 }
 
@@ -299,6 +300,7 @@
 .celebs__box {
   display: flex;
   gap: 23px;
+  touch-action: none;
 }
 
 .celebs__picture {
@@ -319,6 +321,13 @@
 @media (max-width: 1150px) {
   .celebs-glasses__img {
     bottom: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .celebs-glasses__img {
+    bottom: 112px;
+    min-width: 240px;
   }
 }
 
@@ -617,6 +626,12 @@
 
 .solution-types .stories__carousel-item {
   min-width: 310px;
+}
+
+@media (max-width: 550px) {
+  .solution-types .stories__carousel-item {
+    min-width: 290px;
+  }
 }
 
 .featured {
@@ -978,6 +993,16 @@
 }
 
 .mobile-nav__box {
+  position: relative;
+}
+
+@media (min-width: 1151px) {
+  .mobile-nav__box {
+    display: none;
+  }
+}
+
+.mobile-nav__inner {
   position: fixed;
   max-width: 400px;
   width: 100%;
@@ -988,7 +1013,7 @@
 }
 
 @media (max-width: 800px) {
-  .mobile-nav__box {
+  .mobile-nav__inner {
     max-width: none;
     top: 65px;
     left: 0px;
@@ -1011,10 +1036,39 @@
   width: 100%;
 }
 
+@media (max-width: 1150px) {
+  .catalog-category {
+    display: none;
+    position: absolute;
+    max-width: none;
+    height: 390px;
+    overflow-y: scroll;
+    background-color: #F6F6F6;
+    top: 0px;
+    left: 0px;
+  }
+}
+
 .catalog-item {
   display: none;
   transition: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
   animation: fadeInLeft 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 1150px) {
+  .catalog-item {
+    background-color: #FFFFFF;
+    max-width: 400px;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .catalog-item {
+    overflow-x: hidden;
+    max-width: none;
+  }
 }
 
 .catalog-item-img {
@@ -1029,6 +1083,18 @@
   text-transform: uppercase;
   color: #0A0A0A;
   margin-bottom: 18px;
+}
+
+@media (max-width: 1150px) {
+  .catalog-item__title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #0A0A0A;
+    text-transform: none;
+    margin-bottom: 16px;
+    padding: 16px 16px 0 16px;
+  }
 }
 
 .catalog-item__name {
@@ -1068,10 +1134,23 @@
   flex-direction: column;
 }
 
+@media (max-width: 1150px) {
+  .catalog-item__link {
+    display: inline-flex;
+  }
+}
+
 .catalog-item__block {
   background-color: #F7F7F7;
   border-radius: 6px;
   padding: 0 0 28.5px 0;
+}
+
+@media (max-width: 1150px) {
+  .catalog-item__block {
+    margin: auto;
+    padding: 0px 19px 28.5px 19px;
+  }
 }
 
 .catalog-item__block:nth-child(1) {
@@ -1088,6 +1167,13 @@
   color: #0A0A0A;
 }
 
+@media (max-width: 1150px) {
+  .catalog-item__block:nth-child(1) {
+    padding: 24px 53px;
+    grid-column: 1 / 3;
+  }
+}
+
 .catalog-item__block:hover .catalog-item__name {
   text-decoration: underline;
 }
@@ -1100,8 +1186,36 @@
   grid-template-rows: 220px 220px;
 }
 
+@media (max-width: 1265px) {
+  .catalog-item__container {
+    grid-template-columns: 300px 180px 180px 180px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .catalog-item__container {
+    row-gap: 16px;
+    column-gap: 8px;
+    grid-template-columns: 175.5px 175.5px;
+    grid-template-rows: 1fr;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1150px) {
+  .category-inner {
+    background-color: #fff;
+  }
+}
+
 .category-inner:not(:last-child) {
   margin-bottom: 30px;
+}
+
+@media (max-width: 1150px) {
+  .category-inner:not(:last-child) {
+    margin-bottom: 0px;
+  }
 }
 
 .category-text {
@@ -1109,6 +1223,13 @@
   font-size: 13px;
   line-height: 17px;
   color: #0A0A0A;
+}
+
+@media (max-width: 1150px) {
+  .category-text {
+    font-size: 18px;
+    line-height: 23px;
+  }
 }
 
 .category-title {
@@ -1119,6 +1240,16 @@
   margin-bottom: 5px;
 }
 
+@media (max-width: 1150px) {
+  .category-title {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 0px;
+    background-color: #F6F6F6;
+    padding: 8px 0 8px 16px;
+  }
+}
+
 .category-item {
   padding: 0 8px;
   display: flex;
@@ -1126,4 +1257,11 @@
   gap: 10px;
   margin-bottom: 3px;
   cursor: pointer;
+}
+
+@media (max-width: 1150px) {
+  .category-item {
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 0px;
+  }
 }
