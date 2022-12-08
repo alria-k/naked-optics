@@ -176,3 +176,21 @@ backBtn.addEventListener("click", (e) => {
     }
   });
 });
+
+// tabs
+
+function tabsOpen(desctopTab, desctopOpen) {
+  const tabs = document.querySelectorAll(desctopTab);
+  const openTab = document.querySelectorAll(desctopOpen);
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", (e) => {
+      for (let v = 0; v < openTab.length; v++) {
+        if (i == v) {
+          openTab[v].classList.toggle("active");
+        }
+      }
+    });
+  }
+}
+
+tabsOpen(".footer__column", ".footer__column-block");
