@@ -3,7 +3,8 @@
 let burger = document.querySelector(".burger__menu"),
   burgerLines = document.querySelector(".burger-lines"),
   burgerMenu = document.querySelector(".mobile-nav__box"),
-  overflow = document.createElement("div");
+  overflow = document.createElement("div"),
+  mobileNavBurger = document.querySelectorAll(".catalog-category");
 
 overflow.className = "overflow-popup";
 
@@ -12,7 +13,11 @@ burger.addEventListener("click", (e) => {
   burgerLines.classList.toggle("burger-cross");
   if (burgerMenu.classList.contains("hiden")) {
     document.body.style.overflow = "visible";
+    mobileNavBurger[1].classList.remove("active");
     overflow.remove();
+    catalogItems.forEach((e) => {
+      e.classList.remove("is__open");
+    });
   } else {
     document.body.style.overflow = "hidden";
     document.body.prepend(overflow);
@@ -128,3 +133,46 @@ mobileNavBtn[0].addEventListener("click", (e) => {
 });
 
 hoverTabs();
+
+//show search tab
+
+let headerBox = document.querySelector(".header__box"),
+  searchBtn = document.querySelectorAll(".search-btn"),
+  searchBox = document.querySelector(".search__box"),
+  deleteSearch = document.querySelector(".search-delete-icon"),
+  burgerBox = document.querySelector(".burger__box");
+
+searchBtn.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    searchBox.classList.add("animation__search");
+    document.body.prepend(overflow);
+    if (window.innerWidth > 1150) {
+      headerBox.classList.add("closed");
+    } else {
+      burgerBox.classList.add("closed");
+    }
+  });
+  deleteSearch.addEventListener("click", (e) => {
+    searchBox.classList.remove("animation__search");
+    overflow.remove();
+    if (window.innerWidth > 1150) {
+      headerBox.classList.remove("closed");
+    } else {
+      burgerBox.classList.remove("closed");
+    }
+  });
+});
+
+// back mobile nav
+
+let backBtn = document.querySelector(".back-btn"),
+  catalogItemTarget;
+
+backBtn.addEventListener("click", (e) => {
+  catalogItems.forEach((e) => {
+    catalogItemTarget = e;
+    if (catalogItemTarget.classList.contains("is__open")) {
+      catalogItemTarget.classList.remove("is__open");
+    }
+  });
+});

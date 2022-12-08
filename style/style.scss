@@ -24,6 +24,18 @@
         opacity: 1;
     }
 }
+@keyframes searchShow {
+    0%{
+        display: flex;
+        width: 0%;
+        opacity: 0.1;
+    }
+    100%{
+        width: 100%;
+        opacity: 1;
+    }
+
+}
 body{
     background: #F6F6F6;
 }
@@ -64,6 +76,11 @@ body{
                 transform: translateX(5px);
             }
         }
+    }
+}
+.logo__img{
+    @media (max-width: 1150px) {
+        display: none;
     }
 }
 .custom {
@@ -130,6 +147,9 @@ body{
     visibility: hidden !important;
     opacity: 0 !important;
 }
+.closed{
+    display: none !important;
+}
 .active{
     display: block !important;
 }
@@ -155,4 +175,9 @@ body{
 .is__point{
     background: #F7F7F7;
     border-radius: 6px;
+}
+.animation__search{
+    display: flex !important;
+    animation: searchShow 1s cubic-bezier(0.22, 1, 0.36, 1) ;
+    transition: searchShow 1s cubic-bezier(0.22, 1, 0.36, 1) ;
 }
